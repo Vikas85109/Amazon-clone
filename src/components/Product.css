@@ -17,6 +17,10 @@
 
 .product_wrap .product img{
     max-width: 100%;
+    height: 300px;
+    object-fit: contain;
+    width: 100%;
+    object-position: top;
 }
 
 .product_wrap .product p{

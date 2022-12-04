@@ -7,7 +7,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 
 
-const Header = () => {
+const Header = ({ cart }) => {
+    console.log(34, cart)
     return (
         <>
             <div className="header">
@@ -41,7 +42,7 @@ const Header = () => {
                         <ShoppingCartIcon />
 
 
-                        <span>10</span>
+                        <span>{cart?.total_unique_items }</span>
                     </Link>
                 </div>
 
@@ -55,7 +56,7 @@ const Header = () => {
                     <li>Computer</li>
                     <li>Cloths</li>
                     <li>Shoes</li>
-                    <li>Electronocs</li>
+                    <li>Electronic</li>
 
                     <li><img src="https://m.media-amazon.com/images/G/31/img17/Home/AmazonTV/Ravina/Desktop/SWM_400x39_Crushed-S2._CB620377409_.jpg" alt="img" /></li>
                 </ul>
