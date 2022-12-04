@@ -1,16 +1,21 @@
 import React from 'react'
 import './App.css'
-import Banner from './components/Banner'
 import Header from './components/Header'
 import Product from './components/Product'
 
+// Routers
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import ShoppingCart from './components/ShoppingCart'
+
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      <Banner />
-      <Product/>
-    </div>
+      <Routes>
+        <Route path='/' element={<Product/> } />
+        <Route path='/cart' element={<ShoppingCart/> } />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

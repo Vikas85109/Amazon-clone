@@ -4,17 +4,19 @@ import './Header.css'
 // Icons
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
     return (
         <>
             <div className="header">
-                <img src="https://pngimg.com/uploads/amazon/amazon_PNG25.png" alt="logo" className='header__logo' />
-
+                <Link to='/'>
+                    <img src="https://pngimg.com/uploads/amazon/amazon_PNG25.png" alt="logo" className='header__logo' />
+                </Link>
                 <div className="header__serach">
                     <input type="text" name="" id="" />
-                    <SearchIcon className='header__searchIcon'/>
+                    <SearchIcon className='header__searchIcon' />
                 </div>
 
                 <div className="header__nav">
@@ -35,9 +37,12 @@ const Header = () => {
                 </div>
 
                 <div className="header__optionBasket">
-                    <ShoppingCartIcon />
+                    <Link to='/cart'>
+                        <ShoppingCartIcon />
 
-                    <span>10</span>
+
+                        <span>10</span>
+                    </Link>
                 </div>
 
             </div>
