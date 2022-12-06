@@ -7,8 +7,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 
 
-const Header = ({ cart }) => {
-    console.log(34, cart)
+const Header = ({ cart, categoryList }) => {
+    console.log(34, categoryList)
     return (
         <>
             <div className="header">
@@ -50,17 +50,28 @@ const Header = ({ cart }) => {
 
             <div className="header__buttom">
                 <ul>
-                    <li>All</li>
+                    {
+                        categoryList?.map((category) => {
+                            return <li key={category.id}>
+                                <Link to={`/category/${category.slug}`}>
+                                    {(category.name)}
+                                </Link>
+                            </li>
+                        })
+                    }
+                    {/* <li>All</li>
                     <li>Mobile</li>
                     <li>Category</li>
                     <li>Computer</li>
                     <li>Cloths</li>
                     <li>Shoes</li>
-                    <li>Electronic</li>
+                    <li>Electronic</li> */}
 
                     <li><img src="https://m.media-amazon.com/images/G/31/img17/Home/AmazonTV/Ravina/Desktop/SWM_400x39_Crushed-S2._CB620377409_.jpg" alt="img" /></li>
                 </ul>
             </div>
+
+            
 
         </>
     )

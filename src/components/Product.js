@@ -1,13 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Banner from './Banner'
 import './Product.css'
 
-const product = ({ productsList, addToCart }) => {
+const product = ({ productsList, addToCart, fetchProductByCategory }) => {
     
+    let { slug } = useParams();
+
+    console.log(34, slug)
+
+    useEffect(() => {
+        if (slug) {
+            fetchProductByCategory(slug)
+        }
+    }, [slug])
+
     return (
         <>
 
-            <Banner />
+            {/* <Banner /> */}
             < div className="product_wrap" >
 
                 {

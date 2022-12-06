@@ -110,3 +110,8 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+.header__buttom ul li a{
+    color: #fff;
+    text-decoration: none;
+}
