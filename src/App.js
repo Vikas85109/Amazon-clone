@@ -9,6 +9,8 @@ import ShoppingCart from './components/ShoppingCart'
 
 import commerce from './lib/commerce'
 import Banner from './components/Banner'
+import Checkout from './components/Checkout'
+import Thankyou from './components/Thankyou'
 
 const App = () => {
 
@@ -16,6 +18,10 @@ const App = () => {
   const [categoryList, setCategoryList] = useState([])
   const [productsListByCategory, setProductsListByCategory] = useState([])
   const [cart, setCart] = useState([])
+  console.log(888878, cart)
+  console.log(450,'productsList', productsList)
+  console.log(450,"productsListByCategory", productsListByCategory)
+  console.log(450,"categoryList", categoryList)
 
   const fetchProduct = async () => {
     try {
@@ -84,6 +90,10 @@ const App = () => {
         <Route path='/category/:slug' element={<><div style={{ marginBottom: "320px" }}></div><Product productsList={productsListByCategory}
           fetchProductByCategory={fetchProductByCategory}
           addToCart={addToCart} /></>} />
+        
+        <Route path='/checkout' element={<Checkout cart={cart} />} />
+        
+        <Route path='/thankyou' element={<Thankyou/>} />
 
         <Route path='*' element={<h1>404 Page Not Found</h1>} />
       </Routes>

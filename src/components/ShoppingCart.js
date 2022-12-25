@@ -1,8 +1,13 @@
 import React from 'react'
 import './ShoppingCart.css'
+import {useNavigate} from 'react-router-dom'
 
 const ShoppingCart = ({ cart, removeFromCart }) => {
-  console.log("sss", cart)
+  
+  const navigate = useNavigate();
+  console.log(66, navigate)
+  
+
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -42,7 +47,7 @@ const ShoppingCart = ({ cart, removeFromCart }) => {
             this  Order containers a gift
           </small>
         </div>
-        <button>Proceed to Checkout</button>
+        <button onClick={() => navigate('/checkout')}>Proceed to Checkout</button>
       </div>
 
     </div>

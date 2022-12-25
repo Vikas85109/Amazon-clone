@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom'
 import Banner from './Banner'
 import './Product.css'
 
-const product = ({ productsList, addToCart, fetchProductByCategory }) => {
-    
+const Product =  ({ productsList, addToCart, fetchProductByCategory }) => {
     let { slug } = useParams();
 
     console.log(34, slug)
@@ -15,6 +14,8 @@ const product = ({ productsList, addToCart, fetchProductByCategory }) => {
         }
     }, [slug])
 
+
+
     return (
         <>
 
@@ -22,18 +23,20 @@ const product = ({ productsList, addToCart, fetchProductByCategory }) => {
             < div className="product_wrap" >
 
                 {
-                    productsList.map((item, i) => {
+                    productsList?.map((item, i) => {
                         return <div className="product" key={item.id}>
                             <img src={item.image.url} alt="" />
                             <h3>{item.name}</h3>
-                            <p>{item.price.formatted_with_symbol }</p>
-                            <button onClick={() => addToCart(item.id,1)}>Add to Cart</button>
+                            <p>{item.price.formatted_with_symbol}</p>
+                            <button onClick={() => addToCart(item.id, 1)}>Add to Cart</button>
                         </div>
+
 
                     })
                 }
 
                 
+
                 {/* <div className="product">
                     <img src="https://m.media-amazon.com/images/I/61ZbKLlt0sL._AC_UL320_.jpg" alt="" />
                     <h3>Product Name</h3>
@@ -76,4 +79,4 @@ const product = ({ productsList, addToCart, fetchProductByCategory }) => {
     )
 }
 
-export default product
+export default Product
