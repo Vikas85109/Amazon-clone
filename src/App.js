@@ -18,6 +18,8 @@ const App = () => {
   const [categoryList, setCategoryList] = useState([])
   const [productsListByCategory, setProductsListByCategory] = useState([])
   const [cart, setCart] = useState([])
+  const [orderDetails, setOrderDetails] = useState({});
+
   console.log(888878, cart)
   console.log(450,'productsList', productsList)
   console.log(450,"productsListByCategory", productsListByCategory)

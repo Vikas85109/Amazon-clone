@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './Checkout.css'
 import commerce from '../lib/commerce'
+import { useNavigate } from 'react-router-dom'
 
 
 const Checkout = ({ cart }) => {
+const navigate= useNavigate()
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [address, setAddress] = useState("")
+    const [city, setCity] = useState("")
+    const [zip, setZip] = useState("")
 
     const [token, setToken] = useState({})
     const [countriesList, setCountriesList] = useState([])
@@ -13,7 +21,7 @@ const Checkout = ({ cart }) => {
     const [shipping, setShipping] = useState(null)
     const [shippingOptions, setShippingOptions] = useState(null)
 
-
+    console.log(8989,countriesList)
     const getShippingCountry = async (tokenID) => {
         try {
             const { countries } = await commerce.services.localeListShippingCountries(tokenID);
@@ -85,44 +93,87 @@ const Checkout = ({ cart }) => {
     }
 
 
+
+    const handleChange = async (e) => {
+        e.preventDefault()
+        navigate('/thankyou')
+
+        // if (generateToken) {
+        //     const incomingOrder = await commerce.checkout.capture(generateToken, {
+        //         line_items: generateToken.live.line_items,
+        //         customer: {
+        //             firstname: firstName,
+        //             lastname: lastName,
+        //             email: email
+        //         },
+        //         shipping: {
+        //             name: firstName,
+        //             street: address,
+        //             town_city: city,
+        //             county_state: subdivision,
+        //             postal_zip_code: zip,
+        //             country: country
+        //         },
+        //         fulfillment: {
+        //             shipping_method: shipping,
+        //         },
+
+        //         payment: {
+        //             gateway: 'test_gateway',
+        //             card: {
+        //                 number: '4242424242424242',
+        //                 expiry_month: '02',
+        //                 expiry_year: '24',
+        //                 cvc: '123',
+        //                 postal_zip_code: '94107',
+        //             },
+        //         },
+        //         pay_what_you_want: cart.subtotal.raw
+        //     })
+        //     // setOrder(incomingOrder)
+        //     console.log("first", incomingOrder)
+        // }
+
+    }
+
     return (
         <div className='checkout_wrap'>
             <h2>Shopping Details</h2>
             <br />
 
-            <form action="">
+            <form action="" onSubmit={(e) => handleChange(e)}>
                 <div className="checkout__form">
                     <div className="checkout__column">
                         <label htmlFor="">First Name*</label>
-                        <input name="firstname" id="" required />
+                        <input name="firstname" id="" required value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                     </div>
 
                     <div className="checkout__column">
                         <label htmlFor="">Last Name*</label>
-                        <input name="lastname" id="" required />
+                        <input name="lastname" id="" required value={lastName} onChange={(e) => setLastName(e.target.value)} />
                     </div>
 
                     <div className="checkout__column">
                         <label htmlFor="">Address*</label>
-                        <input name="address" id="" required />
+                        <input name="address" id="" required value={address} onChange={(e) => setAddress(e.target.value)} />
                     </div>
 
                     <div className="checkout__column">
                         <label htmlFor="">Email*</label>
-                        <input name="email" id="" required />
+                        <input name="email" id="" required value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
                     <div className="checkout__column">
                         <label htmlFor="">City*</label>
-                        <input name="city" id="" required />
+                        <input name="city" id="" required value={city} onChange={(e) => setCity(e.target.value)} />
                     </div>
 
                     <div className="checkout__column">
                         <label htmlFor="">Zipcode*</label>
-                        <input name="zipcode" id="" required />
+                        <input name="zipcode" id="" required value={zip} onChange={(e) => setZip(e.target.value)} />
                     </div>
 
-                    <div className="checkout__column">
+                    {/* <div className="checkout__column">
                         <label htmlFor="">Shipping Country*</label>
                         <select name="country" id="" value={country} onChange={handleOptionChange}>
                             {
@@ -154,7 +205,7 @@ const Checkout = ({ cart }) => {
                                 })
                             }
                         </select>
-                    </div>
+                    </div> */}
 
                     <div className="checkout__column">
                         <label htmlFor="">&nbsp;</label>
